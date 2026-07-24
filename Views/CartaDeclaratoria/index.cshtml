@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatos de Cumplimiento - Order Express</title>
+    
+    <style>
+        :root {
+            --primary-color: #1a1752;
+            --primary-light: #2a2675;
+            --accent-color: #e31212;
+            --bg-color: #f4f7fa;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 12px 24px -4px rgba(26, 23, 82, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- HEADER / NAVBAR --- */
+        .navbar {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .brand-logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-badge {
+            background-color: #e2e8f0;
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* --- HERO BANNER (AZUL SÓLIDO) --- */
+        .hero-banner {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            color: #cbd5e1;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .main-container {
+            max-width: 1100px;
+            margin: 30px auto 40px auto;
+            padding: 0 20px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* BARRA DE BÚSQUEDA CORREGIDA Y ALINEADA */
+        .controls-bar {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            font-size: 13px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            outline: none;
+            background-color: #f8fafc;
+            transition: all 0.2s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(26, 23, 82, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            color: var(--text-muted);
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+        .counter-badge {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* GRID DE TARJETAS */
+        .grid-formatos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        /* TARJETA / CARD DE FORMATO */
+        .card-formato {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-formato::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary-color);
+            transition: width 0.2s ease;
+        }
+
+        .card-formato:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(26, 23, 82, 0.2);
+        }
+
+        .card-formato:hover::before {
+            width: 6px;
+            background-color: var(--accent-color);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .card-icon-wrapper {
+            width: 45px;
+            height: 45px;
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .card-formato:hover .card-icon-wrapper {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        .status-pill {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-description {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .arrow-icon {
+            transition: transform 0.2s ease;
+        }
+
+        .card-formato:hover .arrow-icon {
+            transform: translateX(5px);
+            color: var(--accent-color);
+        }
+
+        /* --- FOOTER --- */
+        .footer-info {
+            font-size: 10px;
+            text-align: center;
+            color: var(--text-muted);
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            margin-top: auto;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR HEADER -->
+    <header class="navbar">
+        <img src="assets/img/logocc.png" alt="Order Express Casa de Cambio" class="brand-logo-img" />
+        <span class="header-badge">Sistema Interno</span>
+    </header>
+
+    <!-- BANNER DE BIENVENIDA -->
+    <section class="hero-banner">
+        <h1 class="hero-title">FORMATOS DE CUMPLIMIENTO</h1>
+        <p class="hero-subtitle">Selecciona el tipo de carta declaratoria, autorización o formato que deseas emitir.</p>
+    </section>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="main-container">
+
+        <!-- BARRA DE BÚSQUEDA / FILTRO -->
+        <div class="controls-bar">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar formato..." onkeyup="filtrarFormatos()" />
+            </div>
+            <span class="counter-badge" id="formatCounter">5 formatos disponibles</span>
+        </div>
+
+        <!-- REJILLA DE FORMATOS -->
+        <div class="grid-formatos" id="formatosGrid">
+
+            <!-- FORMATO 1: CARTA DECLARATORIA (REMESA) -->
+            <a href="views/CartaDeclaratoria.html" class="card-formato">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">📄</div>
+                        <span class="status-pill">Disponible</span>
+                    </div>
+                    <h2 class="card-title">Carta Declaratoria (Remesa)</h2>
+                    <p class="card-description">
+                        Registro de información del beneficiario y girador para operaciones de remesas cobradas o enviadas por el cliente.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <span>Llenar formato</span>
+                    <span class="arrow-icon">➔</span>
+                </div>
+            </a>
+
+            <!-- FORMATO 2: CARTA DECLARATORIA (EFECTIVO) -->
+            <a href="views/CartaDeclaratoriaEfectivo.html" class="card-formato">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">💵</div>
+                        <span class="status-pill">Disponible</span>
+                    </div>
+                    <h2 class="card-title">Carta Declaratoria (Efectivo)</h2>
+                    <p class="card-description">
+                        Declaración de origen y destino de recursos para transacciones realizadas en efectivo en ventanilla.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <span>Llenar formato</span>
+                    <span class="arrow-icon">➔</span>
+                </div>
+            </a>
+
+            <!-- FORMATO 3: AUTORIZACIÓN OPERACIONES EN EFECTIVO (PERSONA FÍSICA) -->
+            <a href="views/AutorizacionPersonaFisica.html" class="card-formato">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">👤</div>
+                        <span class="status-pill">Disponible</span>
+                    </div>
+                    <h2 class="card-title">Autorización Operaciones EF (Persona Física)</h2>
+                    <p class="card-description">
+                        Escalamiento de aprobación interna y reporte de operación para operaciones individuales de Personas Físicas en USD o MXP.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <span>Llenar formato</span>
+                    <span class="arrow-icon">➔</span>
+                </div>
+            </a>
+
+            <!-- FORMATO 4: AUTORIZACIÓN OPERACIONES EN EFECTIVO (PERSONA MORAL) -->
+            <a href="views/AutorizacionPersonaMoral.html" class="card-formato">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">🏢</div>
+                        <span class="status-pill">Disponible</span>
+                    </div>
+                    <h2 class="card-title">Autorización Operaciones EF (Persona Moral)</h2>
+                    <p class="card-description">
+                        Escalamiento de aprobación interna y reporte de operación para operaciones individuales de Personas Morales en USD o MXP.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <span>Llenar formato</span>
+                    <span class="arrow-icon">➔</span>
+                </div>
+            </a>
+
+            <!-- FORMATO 5: ALTA DE USUARIO KYU (CENTRO CAMBIARIO) -->
+            <a href="views/KYUCentroCambiario.html" class="card-formato">
+                <div>
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">📋</div>
+                        <span class="status-pill">Disponible</span>
+                    </div>
+                    <h2 class="card-title">Alta de Usuario KYU (Centro Cambiario)</h2>
+                    <p class="card-description">
+                        Expediente integral de identificación, representante legal, perfil transaccional, estructura accionaria y PEPS.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <span>Llenar formato</span>
+                    <span class="arrow-icon">➔</span>
+                </div>
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="footer-info">
+        Order Express Casa de Cambio SA de CV Actividad Auxiliar del Crédito | Melchor Ocampo No. 51, Int. A, Col. Centro, C.P. 61250, Maravatío, Michoacán | Tel. (447) 478 0005 | Formato de Uso Interno
+    </footer>
+
+    <!-- SCRIPT DE BÚSQUEDA INTERACTIVA -->
+    <script>
+        function filtrarFormatos() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const grid = document.getElementById('formatosGrid');
+            const cards = grid.getElementsByClassName('card-formato');
+            let visibles = 0;
+
+            for (let i = 0; i < cards.length; i++) {
+                const title = cards[i].querySelector('.card-title').innerText;
+                const desc = cards[i].querySelector('.card-description').innerText;
+
+                if (title.toUpperCase().indexOf(filter) > -1 || desc.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                    visibles++;
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+
+            document.getElementById('formatCounter').innerText = `${visibles} formato(s) encontrado(s)`;
+        }
+    </script>
+
+</body>
+</html>

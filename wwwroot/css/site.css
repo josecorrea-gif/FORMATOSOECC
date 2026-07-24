@@ -1,0 +1,270 @@
+/* ===== Order Express - Carta Declaratoria - estilos propios (sin CDN externo) ===== */
+
+:root {
+    --oe-navy: #1b2a5b;
+    --oe-navy-dark: #14204a;
+    --oe-blue-light: #d9dcf5;
+    --oe-orange: #f47b20;
+    --oe-gray-bg: #f4f5f9;
+    --oe-border: #c9cdd8;
+    --oe-text: #23262b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    color: var(--oe-text);
+    background: var(--oe-gray-bg);
+    font-size: 15px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* ---------- Barra superior ---------- */
+.navbar {
+    background: var(--oe-navy);
+    padding: 10px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 17px;
+}
+.navbar-brand img {
+    height: 34px;
+    background: #fff;
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+.navbar a { color: #fff; }
+.navbar .login-info { color: #fff; font-size: 14px; display: flex; align-items: center; gap: 10px; }
+
+/* ---------- Layout general ---------- */
+main { padding-bottom: 40px; }
+
+h2 {
+    color: var(--oe-navy);
+    border-bottom: 3px solid var(--oe-orange);
+    padding-bottom: 8px;
+    margin-top: 24px;
+}
+
+/* ---------- Fieldsets (secciones del formulario, como en el PDF) ---------- */
+fieldset.form-section {
+    border: 1px solid var(--oe-border);
+    border-radius: 6px;
+    padding: 18px;
+    margin-bottom: 20px;
+    background: #fff;
+}
+fieldset.form-section legend {
+    background: var(--oe-blue-light);
+    color: var(--oe-navy);
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* ---------- Grid simple (reemplaza row/col de Bootstrap) ---------- */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -6px;
+}
+.row > [class*="col-"] {
+    padding: 6px;
+}
+.col-md-3 { flex: 0 0 25%;  max-width: 25%; }
+.col-md-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+.col-md-6 { flex: 0 0 50%;  max-width: 50%; }
+.col-md-8 { flex: 0 0 66.666%; max-width: 66.666%; }
+.col-md-12 { flex: 0 0 100%; max-width: 100%; }
+
+@media (max-width: 700px) {
+    .col-md-3, .col-md-4, .col-md-6, .col-md-8 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* ---------- Formularios ---------- */
+.form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--oe-navy);
+    margin-bottom: 3px;
+}
+.form-control, textarea, input[type=text], input[type=date], input[type=number] {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--oe-border);
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fff;
+}
+.form-control:focus, textarea:focus, input:focus {
+    outline: none;
+    border-color: var(--oe-navy);
+    box-shadow: 0 0 0 2px rgba(27,42,91,.15);
+}
+textarea { resize: vertical; }
+
+/* ---------- Botones ---------- */
+.btn {
+    display: inline-block;
+    padding: 9px 18px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity .15s ease;
+}
+.btn:hover { opacity: .88; }
+.btn-primary { background: var(--oe-navy); color: #fff; }
+.btn-secondary { background: #6c757d; color: #fff; }
+.btn-success { background: var(--oe-orange); color: #fff; }
+.btn-outline-primary { background: #fff; color: var(--oe-navy); border-color: var(--oe-navy); }
+.btn-outline-secondary { background: #fff; color: #555; border-color: var(--oe-border); }
+.btn-sm { padding: 5px 10px; font-size: 12px; }
+
+/* ---------- Tablas ---------- */
+.table-responsive { overflow-x: auto; }
+table.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+table.table th, table.table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--oe-border);
+    text-align: left;
+    font-size: 14px;
+}
+table.table thead th {
+    background: var(--oe-navy);
+    color: #fff;
+    font-weight: 600;
+}
+table.table.table-striped tbody tr:nth-child(odd) { background: var(--oe-gray-bg); }
+table.table.table-hover tbody tr:hover { background: var(--oe-blue-light); }
+
+/* ---------- Utilidades mínimas ---------- */
+.d-flex { display: flex; }
+.justify-content-between { justify-content: space-between; }
+.align-items-center { align-items: center; }
+.mb-2 { margin-bottom: 8px; }
+.mb-3 { margin-bottom: 16px; }
+.mb-4 { margin-bottom: 24px; }
+.mt-3 { margin-top: 16px; }
+.text-danger { color: #c0392b; }
+.fs-6 { font-size: 14px; }
+.text-primary { color: var(--oe-navy); }
+
+
+
+/* Estilos generales para el formulario de Carta Declaratoria */
+.form-section {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.form-section legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: auto;
+    padding: 0 10px;
+    margin-bottom: 0;
+}
+
+/* ---------------------------------------------------
+   Estilos específicos para impresión / Generación PDF 
+   --------------------------------------------------- */
+@media print {
+    @page {
+        size: letter;
+        margin: 2cm;
+    }
+    
+    body {
+        font-size: 12pt;
+        color: #000;
+        background: #fff;
+    }
+
+    /* Ocultar elementos que no van en el PDF */
+    .btn, nav, footer, header {
+        display: none !important;
+    }
+
+    /* Quitar bordes para un look de documento */
+    .form-section {
+        border: none;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+
+    .form-section legend {
+        font-size: 14pt;
+        border-bottom: 2px solid #000;
+        width: 100%;
+        padding: 0;
+        margin-bottom: 15px;
+    }
+
+    /* Convertir inputs en líneas */
+    .form-control {
+        border: none;
+        border-bottom: 1px solid #000;
+        border-radius: 0;
+        padding: 2px 5px;
+        height: auto;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .form-label {
+        font-weight: bold;
+        font-size: 10pt;
+        margin-bottom: 0;
+    }
+
+    /* Forzar la cuadrícula en el PDF */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .col-md-3 { width: 25%; }
+    .col-md-4 { width: 33.33%; }
+    .col-md-6 { width: 50%; }
+    .col-md-8 { width: 66.66%; }
+    .col-md-12 { width: 100%; }
+    
+    .col-md-3, .col-md-4, .col-md-6, .col-md-8, .col-md-12 {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-bottom: 10px;
+    }
+}
